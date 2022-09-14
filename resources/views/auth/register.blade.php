@@ -10,7 +10,22 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
+                        
+                        <div class="row mb-3">
+                            <label for="level" class="col-md-4 col-form-label text-md-end">{{ __('level User') }}</label>
+                            <div class="col-md-6">
+                                <select id="level" type="level" class="form-control @error('level') is-invalid @enderror" name="level" value="{{ old('level') }}" required autocomplete="level" autofocus>
+                                    <option>Admin</option>
+                                    <option>Member</option>
+                                </select>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
